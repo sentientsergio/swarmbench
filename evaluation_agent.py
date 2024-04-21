@@ -3,31 +3,6 @@ from openai import OpenAI
 import os
 import re
 
-def parse_gpt_output(gpt_output):
-    """Parse the structured text output into a dictionary."""
-    scores_pattern = r"accuracy: (\d)\n\s+relevance: (\d)\n\s+coherence: (\d)"
-    notes_pattern = r"accuracy: '([^']+)'\n\s+relevance: '([^']+)'\n\s+coherence: '([^']+)'"
-    
-    scores_match = re.search(scores_pattern, gpt_output)
-    notes_match = re.search(notes_pattern, gpt_output)
-    
-    if scores_match and notes_match:
-        return {
-            'scores': {
-                'accuracy': int(scores_match.group(1)),
-                'relevance': int(scores_match.group(2)),
-                'coherence': int(scores_match.group(3))
-            },
-            'evaluation_notes': {
-                'accuracy': notes_match.group(1),
-                'relevance': notes_match.group(2),
-                'coherence': notes_match.group(3)
-            }
-        }
-    else:
-        return None
-
-
 def load_prompt_template(file_path):
     """Load the prompt template from a YAML file."""
     try:

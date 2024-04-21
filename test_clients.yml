@@ -1,0 +1,9 @@
+clients:
+  - name: OpenAI-gpt4
+    base_url: "https://api.openai.com/v1"
+    api_key: "env:OPENAI_API_KEY"
+    model: "gpt-4"
+  - name: Local-Llama-3-70B
+    base_url: "http://localhost:1234/v1"
+    api_key: "lm-studio"
+    model: "lmstudio-community/Meta-Llama-3-70B-Instruct-GGUF/Meta-Llama-3-70B-Instruct-Q4_K_M.gguf"

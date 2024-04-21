@@ -45,27 +45,28 @@ SwarmBench utilizes a detailed rubric designed to evaluate the performance of LL
   - `1` - Moderate Coherence: The response has minor issues but is generally understandable.
   - `2` - High Coherence: The response is well-structured, clear, and logically presented.
 
-### Benchmark Questions
+## Benchmark Rubric Configuration (`benchmark_rubric.yml`)
 
-The benchmark includes a set of questions designed to challenge the LLMs across different types of tasks, ensuring a comprehensive evaluation of their capabilities.
+### Overview
+The `benchmark_rubric.yml` file is an essential component of the **SwarmBench** project. It centralizes all the questions, correct answers, and detailed scoring criteria used in benchmarking Large Language Models (LLMs). By structuring this information in a YAML file, the benchmark can be easily updated and maintained without changing the core application code, facilitating straightforward modifications and extensions to the testing framework.
 
-#### Math Problems
-- **Zero-shot**: "Calculate the product of 123 and 456."
-- **Multiple-shot**: "A rectangle's length is twice its width. If the area is 288 square units, what are the dimensions?"
+### File Structure
+The `benchmark_rubric.yml` contains a structured list of benchmark questions. Each question is defined with several key elements:
 
-#### Coding Challenges
-- **Zero-shot**: "Write a function to check if a string is a palindrome."
-- **Multiple-shot**: "Develop a function to merge two sorted lists into one without using built-in sort functions."
+- **ID**: A unique identifier for each question.
+- **Category**: Specifies the category of the question, such as Math Problems, Coding Challenges, Word Problems and Puzzles, or Text Comprehension.
+- **Prompt**: Includes the question text or scenario presented to the LLM. For certain categories like Text Comprehension, this includes both the background text and the specific question asked.
+- **Answer**: Defines the correct or expected answer, which is crucial for evaluating the LLM’s accuracy.
+- **Scoring**: Outlines the criteria for scoring responses based on:
+  - **Accuracy**: Scores range from 0 (incorrect) to 2 (fully correct), assessing how accurately the response matches the expected answer.
+  - **Relevance**: Evaluates whether the response appropriately addresses the prompt, with scores ranging from 0 (irrelevant) to 2 (fully relevant).
+  - **Coherence**: Measures the logical and grammatical structure of the response, also on a scale from 0 (incoherent) to 2 (highly coherent).
 
-#### Word Problems and Puzzles
-- **Zero-shot**: "What is the angle between the hour and the minute hands when a clock shows 3:15?"
-- **Multiple-shot**: "Measure 45 minutes using two ropes that each take 60 minutes to burn unpredictably."
+### Usage
+This file is loaded into the **SwarmBench** system at runtime, where it serves as the foundation for evaluating LLM responses. The scoring system interprets the criteria specified in the file to assign quantitative scores to each response, enabling an objective and consistent assessment of LLM capabilities.
 
-#### Memory Recall (Needle in Context Haystack)
-- **Zero-shot**: "From the narrative about the development of wireless telegraph in March 1887: 'What critical technological breakthrough was reported to have occurred, and who was credited with this achievement?'"
-- **Multiple-shot**: "Based on the series of articles on environmental policy development: 'Trace the timeline of key events as described across the articles and explain how public opinion influenced the policy changes.'"
-
-These questions cover a range of difficulties and formats, from straightforward calculations to complex problem-solving scenarios, ensuring that each LLM's performance is rigorously tested under varied conditions.
+### Modifications
+To update or extend the benchmark tests, contributors can edit this YAML file, adding new questions or modifying existing ones. Changes in this file will be reflected in the benchmark tests without requiring adjustments to the application's operational code.
 
 ## How to Use
 

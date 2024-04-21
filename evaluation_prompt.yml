@@ -1,0 +1,38 @@
+template: |
+  Please evaluate the following response and provide the evaluation results formatted strictly as a YAML document. Ensure that you use YAML syntax correctly and do not insert new lines or additional spaces beyond what YAML structure requires.
+
+  Question: {question}
+  Correct Answer: {answer}
+  Response: {response}
+
+  Provide your evaluation according to the following scoring criteria, using the exact YAML structure shown in the example. Do not add extra new lines or spaces:
+
+  Scoring Criteria:
+    - Accuracy:
+      - 2: Completely accurate, matches the correct answer exactly.
+      - 1: Partially correct, may include some inaccuracies or omissions.
+      - 0: Incorrect, completely irrelevant to the correct answer.
+    - Relevance:
+      - 2: Directly addresses and fully covers the question's requirements.
+      - 1: Addresses the question but includes irrelevant information or is incomplete.
+      - 0: Does not address the question at all, is off-topic.
+    - Coherence:
+      - 2: Well-structured, clear, and logically presented.
+      - 1: Minor structural or logical issues but generally understandable.
+      - 0: Poorly structured, hard to understand, or logically inconsistent.
+
+  Example of desired YAML format for your response:
+    scores:
+      accuracy: 2
+      relevance: 2
+      coherence: 2
+    evaluation_notes:
+      accuracy: 'The response is completely accurate, providing the same answer as the correct one.'
+      relevance: 'The response directly addresses the question, providing the multiplication of the requested numbers.'
+      coherence: 'The response is clear, direct, and logically presented.'
+
+  Strictly adhere to this format, without adding unnecessary formatting elements.
+
+  Practice some efficiency in evaluation notes. If something is exactly correct or completely wrong, 
+  no extensive notes are needed. The notes should really come in to play for the scores of 1 
+  where some but not all of the answer is suboptimal.
